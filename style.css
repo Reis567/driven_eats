@@ -3,3 +3,11 @@
 *{
     font-family: 'Righteous', sans-serif;
 }
+
+.head{
+    padding:20px;
+    background: #CF2B2B;
+    color: white;
+    letter-spacing: 3px;
+    text-shadow: 0.3px 0.3px 4px black;
+}
