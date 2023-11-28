@@ -14,18 +14,23 @@
     width: 100%;
     top: 0;
 }
+.body{
+    background: #e8edea;
+}
 .first-order{
-    margin-top: 100px;
+    margin-top: 90px;
     padding: 10px;
 }
 .first-order h1{
     font-size: 23px;
+    margin-bottom: 10px;
 }
 .sec-order{
     padding: 10px;
 }
 .sec-order h1{
     font-size: 23px;
+    margin-bottom: 10px;
 }
 .third-order{
     padding: 10px;
@@ -33,6 +38,7 @@
 
 .third-order h1{
     font-size: 23px;
+    margin-bottom: 10px;
 }
 
 
@@ -44,7 +50,18 @@
     width: 200px;
     height: 200px;
     padding: 10px;
+    background: white;
+    border-radius: 10px;
+    margin-right: 10px;
 }
 .order-card img{
     min-width: 150px;
+    border-radius: 10px;
+}
+.order-card h3{
+    font-size: 13px;
+}
+.order-card p{
+    font-size: 10px;
+    margin-block: 5px;
 }
