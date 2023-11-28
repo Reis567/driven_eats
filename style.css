@@ -4,7 +4,7 @@
     font-family: 'Righteous', sans-serif;
 }
 
-.head{
+.header{
     padding:20px;
     background: #CF2B2B;
     color: white;
@@ -13,6 +13,7 @@
     position: fixed;
     width: 100%;
     top: 0;
+    z-index: 1;
 }
 .body{
     background: #e8edea;
@@ -69,7 +70,9 @@
     border-radius: 10px;
     margin-right: 10px;
     border: 2px solid transparent;
+    position: relative;
 }
+
 .order-card img{
     min-width: 150px;
     border-radius: 10px;
@@ -80,4 +83,15 @@
 .order-card p{
     font-size: 10px;
     margin-block: 5px;
+}
+.order-card i{
+    padding: 1px 3px;
+    background: green;
+    border-radius: 50%;
+    color: white;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: none;
+
 }

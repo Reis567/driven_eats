@@ -7,9 +7,10 @@
     <link rel="icon" href="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f354.svg" type="image/x-icon">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <div class="head">
+    <div class="header">
         <h1>
             DrivenEats
         </h1>
@@ -35,6 +36,7 @@
                     <h3>
                         R$ 14,90
                     </h3>
+                    <i class="bi bi-check2"></i>
                 </div>
 
                 <div class="order-card">
@@ -48,6 +50,7 @@
                     <h3>
                         R$ 14,90
                     </h3>
+                    <i class="bi bi-check2"></i>
                 </div>
 
                 <div class="order-card">
@@ -61,6 +64,7 @@
                     <h3>
                         R$ 14,90
                     </h3>
+                    <i class="bi bi-check2"></i>
                 </div>
             </div>
         </div>
@@ -81,6 +85,7 @@
                     <h3>
                         R$ 4,90
                     </h3>
+                    <i class="bi bi-check2"></i>
                 </div>
 
                 <div class="order-card">
@@ -94,6 +99,7 @@
                     <h3>
                         R$ 4,90
                     </h3>
+                    <i class="bi bi-check2"></i>
                 </div>
 
                 <div class="order-card">
@@ -107,6 +113,7 @@
                     <h3>
                         R$ 4,90
                     </h3>
+                    <i class="bi bi-check2"></i>
                 </div>
             </div>
         </div>
@@ -127,6 +134,7 @@
                     <h3>
                         R$ 7,90
                     </h3>
+                    <i class="bi bi-check2"></i>
                 </div>
 
                 <div class="order-card">
@@ -140,6 +148,7 @@
                     <h3>
                         R$ 7,90
                     </h3>
+                    <i class="bi bi-check2"></i>
                 </div>
 
                 <div class="order-card">
@@ -153,6 +162,7 @@
                     <h3>
                         R$ 7,90
                     </h3>
+                    <i class="bi bi-check2"></i>
                 </div>
             </div>
         </div>
@@ -165,7 +175,6 @@
     </div>
 </body>
 </html>
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Armazena os elementos selecionados
@@ -182,8 +191,7 @@
                 // Atualiza o botão do footer
                 footerButton.textContent = "Fazer pedido";
                 footerButton.style.backgroundColor = "green";
-                
-
+                footerButton.style.color = "white";
             } else {
                 // Caso contrário, redefina o botão do footer
                 footerButton.textContent = "Selecione os 3 itens para fechar o pedido";
@@ -197,6 +205,11 @@
             // Se o item já estiver selecionado, desselecione-o
             if (item === selectedFoodItem || item === selectedDrinkItem || item === selectedDessertItem) {
                 item.style.border = "";
+                const icon = item.querySelector("i");
+                if (icon) {
+                    icon.style.display = "none";
+                }
+
                 if (category === "food") {
                     selectedFoodItem = null;
                 } else if (category === "drink") {
@@ -233,21 +246,37 @@
 
         // Função para atualizar o visual dos cards
         function updateCardsVisual() {
-            // Remove a borda verde de todos os cards
+            // Remove a borda verde de todos os cards e oculta os ícones
             const allCards = document.querySelectorAll(".order-card");
             allCards.forEach(card => {
                 card.style.border = "";
+                const icon = card.querySelector("i");
+                if (icon) {
+                    icon.style.display = "none";
+                }
             });
 
-            // Adiciona a borda verde apenas aos cards selecionados
+            // Adiciona a borda verde apenas aos cards selecionados e exibe os ícones
             if (selectedFoodItem) {
                 selectedFoodItem.style.border = "2px solid green";
+                const foodIcon = selectedFoodItem.querySelector("i");
+                if (foodIcon) {
+                    foodIcon.style.display = "block";
+                }
             }
             if (selectedDrinkItem) {
                 selectedDrinkItem.style.border = "2px solid green";
+                const drinkIcon = selectedDrinkItem.querySelector("i");
+                if (drinkIcon) {
+                    drinkIcon.style.display = "block";
+                }
             }
             if (selectedDessertItem) {
                 selectedDessertItem.style.border = "2px solid green";
+                const dessertIcon = selectedDessertItem.querySelector("i");
+                if (dessertIcon) {
+                    dessertIcon.style.display = "block";
+                }
             }
         }
 
