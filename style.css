@@ -17,6 +17,18 @@
 .body{
     background: #e8edea;
 }
+
+.footer{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: white;
+    padding: 10px;
+}
+.footer button{
+    background: #e8edea;
+    padding: 5px;
+}
 .first-order{
     margin-top: 90px;
     padding: 10px;
