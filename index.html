@@ -166,3 +166,113 @@
 </body>
 </html>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Armazena os elementos selecionados
+        let selectedFoodItem = null;
+        let selectedDrinkItem = null;
+        let selectedDessertItem = null;
+
+        // Função para atualizar o estado dos botões
+        function updateButtons() {
+            const footerButton = document.querySelector(".footer button");
+
+            // Verifica se um item foi selecionado em cada seção
+            if (selectedFoodItem && selectedDrinkItem && selectedDessertItem) {
+                // Atualiza o botão do footer
+                footerButton.textContent = "Fazer pedido";
+                footerButton.style.backgroundColor = "green";
+                
+
+            } else {
+                // Caso contrário, redefina o botão do footer
+                footerButton.textContent = "Selecione os 3 itens para fechar o pedido";
+                footerButton.style.backgroundColor = "";
+                footerButton.style.color = "black";
+            }
+        }
+
+        // Função para lidar com a seleção de itens
+        function selectItem(category, item) {
+            // Se o item já estiver selecionado, desselecione-o
+            if (item === selectedFoodItem || item === selectedDrinkItem || item === selectedDessertItem) {
+                item.style.border = "";
+                if (category === "food") {
+                    selectedFoodItem = null;
+                } else if (category === "drink") {
+                    selectedDrinkItem = null;
+                } else if (category === "dessert") {
+                    selectedDessertItem = null;
+                }
+            } else {
+                // Limpa a seleção atual na categoria
+                if (category === "food") {
+                    selectedFoodItem = null;
+                } else if (category === "drink") {
+                    selectedDrinkItem = null;
+                } else if (category === "dessert") {
+                    selectedDessertItem = null;
+                }
+
+                // Atualiza o item selecionado
+                if (category === "food") {
+                    selectedFoodItem = item;
+                } else if (category === "drink") {
+                    selectedDrinkItem = item;
+                } else if (category === "dessert") {
+                    selectedDessertItem = item;
+                }
+
+                // Atualiza o visual dos cards
+                updateCardsVisual();
+            }
+
+            // Atualiza o estado dos botões
+            updateButtons();
+        }
+
+        // Função para atualizar o visual dos cards
+        function updateCardsVisual() {
+            // Remove a borda verde de todos os cards
+            const allCards = document.querySelectorAll(".order-card");
+            allCards.forEach(card => {
+                card.style.border = "";
+            });
+
+            // Adiciona a borda verde apenas aos cards selecionados
+            if (selectedFoodItem) {
+                selectedFoodItem.style.border = "2px solid green";
+            }
+            if (selectedDrinkItem) {
+                selectedDrinkItem.style.border = "2px solid green";
+            }
+            if (selectedDessertItem) {
+                selectedDessertItem.style.border = "2px solid green";
+            }
+        }
+
+        // Adiciona evento de clique aos cards da comida
+        const foodCards = document.querySelectorAll(".first-order .order-card");
+        foodCards.forEach(card => {
+            card.addEventListener("click", function () {
+                selectItem("food", card);
+            });
+        });
+
+        // Adiciona evento de clique aos cards da bebida
+        const drinkCards = document.querySelectorAll(".sec-order .order-card");
+        drinkCards.forEach(card => {
+            card.addEventListener("click", function () {
+                selectItem("drink", card);
+            });
+        });
+
+        // Adiciona evento de clique aos cards da sobremesa
+        const dessertCards = document.querySelectorAll(".third-order .order-card");
+        dessertCards.forEach(card => {
+            card.addEventListener("click", function () {
+                selectItem("dessert", card);
+            });
+        });
+    });
+</script>
