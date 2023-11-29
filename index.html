@@ -192,13 +192,34 @@
                 footerButton.textContent = "Fazer pedido";
                 footerButton.style.backgroundColor = "green";
                 footerButton.style.color = "white";
+                footerButton.addEventListener("click", finalizeOrder);
             } else {
                 // Caso contrário, redefina o botão do footer
                 footerButton.textContent = "Selecione os 3 itens para fechar o pedido";
                 footerButton.style.backgroundColor = "";
                 footerButton.style.color = "black";
+                footerButton.removeEventListener("click", finalizeOrder);
             }
         }
+
+        function finalizeOrder() {
+        if (selectedFoodItem && selectedDrinkItem && selectedDessertItem) {
+            // Prepara a mensagem para o formato que o WhatsApp espera
+            const mensagemWhatsApp = encodeURIComponent(`
+                Olá, gostaria de fazer o pedido:
+                - Prato: ${selectedFoodItem.querySelector("h3").textContent}
+                - Bebida: ${selectedDrinkItem.querySelector("h3").textContent}
+                - Sobremesa: ${selectedDessertItem.querySelector("h3").textContent}
+                Total: R$ ${(14.90 + 4.90 + 7.90).toFixed(2)}
+            `);
+
+            // Cria o link do WhatsApp com a mensagem preenchida
+            const linkWhatsApp = `https://wa.me/5551999999999?text=${mensagemWhatsApp}`;
+
+            // Redireciona para o link do WhatsApp
+            window.location.href = linkWhatsApp;
+        }
+    }
 
         // Função para lidar com a seleção de itens
         function selectItem(category, item) {
